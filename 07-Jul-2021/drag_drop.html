@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>HTML Drag and Drop</title>
+        <style>
+            #drop1 {
+                width: 350px;
+                height: 70px;
+                padding: 10px;
+                border: 1px solid #aaaaaa;
+            }
+</style>
+        <script>
+            function allowDrop(ev){
+                ev.preventDefault();
+            }
+            function drag(ev){
+                ev.dataTransfer.setData("text",ev.target.id);
+            }
+            function drop(ev){
+                //ev.preventDefault();
+                var data=ev.dataTransfer.getData("text");
+                ev.target.appendChild(document.getElementById(data));
+            }
+            function clickCounter(){
+                if(typeof(Storage) !== "undefined"){
+                    if(localStorage.clickcount)
+                    {
+                        localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                    }
+                    else{
+                        localStorage.clickcount = 1;
+                    }
+                    document.getElementById("tcount").innerHTML = localStorage.clickcount;
+                }
+                else{
+                    document.getElementById("tcount").innerHTML = Your browser doesnot support web storage;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <fieldset>
+            <pre>
+            <legend><b><h2>Drag and Drop</h2></b></legend>
+            <p>Drag and Drop</p>
+            <div id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <h2 id="drag1" draggable="true" ondragstart="drag(event)">Drag this to drop</h2>
+
+
+            </pre>
+        </fieldset>
+        <fieldset>
+            <pre>
+                <legend><b><h2>Web Storage</h2><b></legend>
+                <button type="button" onclick="clickCounter()">CLick</button>
+                <span id="tcount"></span>
+            </pre>
+        </fieldset>
+    </body>
+</html>
