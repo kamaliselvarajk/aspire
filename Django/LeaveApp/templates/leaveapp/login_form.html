@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Login Form</title>
+        <style>
+            body{
+                background-image: url('../static/leave.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .div{                
+                position: fixed;
+                top: 10%;
+                left: 20%;
+                width: 300px;
+                border: 3px solid rgb(243, 245, 111);
+                padding: 50px;
+                margin: 20px;
+                border-radius: 25px;
+                box-shadow: burlywood;
+            }
+        </style>
+    </head>
+    <body>
+        <center>    
+        <div class='div'>
+            <h2>Login Here</h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="{{ form.username.id_for_label }}">{{form.username.label_tag}}</label>{{form.username}}<span>{{form.username.error}}</span><br><br>
+                <label for="{{ form.password.id_for_label }}">{{form.password.label_tag}}</label>{{form.password}}<span>{{form.password.error}}</span><br><br>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+        </center>
+        <div>
+            {%  for message in messages%}
+            <h4>{{message}}</h4>
+            {% endfor %}
+          </div>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>User Form</title>
+        <link rel='stylesheet' href='../static/style.css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <nav class='topnav'>
+            <a href='/add' class="navbar-nav ml-auto">Go Back</a>
+            <span class="navbar-nav ml-auto">
+                <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
+            </span>
+        </nav>
+       
+        <div class='div'> <h2>Create Employee</h2>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="{{ form.username.id_for_label }}" style='margin-right: 75px;'>{{form.username.label_tag}}</label>{{form.username}}<span>{{form.username.errors}}</span><br>
+                <label for="{{ form.password.id_for_label }}" style='margin-right: 80px;'>{{form.password.label_tag}}</label>{{form.password}}<span>{{form.password.errors}}</span><br>
+                <label for="{{ form.img.id_for_label }}" style='margin-right: 102px;'>{{form.img.label_tag}}</label>{{form.img}}<span>{{form.img.errors}}</span><br>
+                <label for="{{ form.leave_days.id_for_label }}" style='margin-right: 70px;'>{{form.leave_days.label_tag}}</label>{{form.leave_days}}<span>{{form.leave_days.errors}}</span><br>
+                <label for="{{ form.gender.id_for_label }}" style='margin-right: 95px;'>{{form.gender.label_tag}}</label>{{form.gender}}<span>{{form.gender.errors}}</span><br>
+                <label for="{{ form.manager_name.id_for_label }}" style='margin-right: 37px;'>{{form.manager_name.label_tag}}</label>{{form.manager_name}}<span>{{form.manager_name.errors}}</span><br>
+                <label for="{{ form.group.id_for_label }}" style='margin-right: 103px;'>{{form.group.label_tag}}</label>{{form.group}}<span>{{form.group.errors}}</span><br>
+                <label for="{{ form.bio.id_for_label }}" style='margin-right: 125px;'>{{form.bio.label_tag}}</label>{{form.bio}}<span>{{form.bio.errors}}</span><br>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        
+    </body>
+</html>

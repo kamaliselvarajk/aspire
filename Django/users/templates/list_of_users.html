@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>List of users</title>
+    </head>
+    <body>
+        <h2>List of users</h2>
+        
+        <table border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
+            <tr>
+                <th>Username</th>
+                <th>Leave Days</th>
+                <th>Gender</th>
+                <th>Manager Name</th>
+                <th>Bio</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <td>{{i.username}}</td>
+                <td>{{i.leave_days}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.manager_name}}</td>
+                <td>{{i.bio}}</td>
+            </tr>
+            {%endfor%}
+        </table>
+    </body>
+</html>

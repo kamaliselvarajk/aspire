@@ -16,20 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-from UserProfile import views
-
-
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    #path('', include('polls.urls')),
-    path('', include('Productapp.urls')),
-    path('',include('UserProfile.urls')),
-    #path('input_form/', views.input_form),
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-
+    path('', include('LeaveApp.urls')),
+    path('', include('users.urls')),
 ]

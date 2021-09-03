@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-9y5yz%s!k@6$z@ygf1&adj8^rlpzim8y!_5e7h)a%(+u+3ra35
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'asplapr2213.aspiresys.com',
+    '127.0.0.1',
+]
 
 
 # Application definition
@@ -37,10 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Productapp',
-    'polls',
-    'UserProfile',
-    'rest_framework',
+    'LeaveApp',
+    'users'
+    #'rest_framework',
+    #'lms_app'
 ]
 
 MIDDLEWARE = [
@@ -103,12 +106,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
-    {
-        'NAME': 'Productapp.validators.NumberValidator',
-    },
-    {
-        'NAME': 'Productapp.validators.SymbolValidator',
     },
 ]
 
