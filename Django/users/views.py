@@ -40,8 +40,8 @@ def create_manager(request):
     form = ManagerCreationForm(request.POST)
     if request.method == 'POST':
         if form.is_valid():
-            form.save()  
-            return redirect('/show')
+           form.save()  
+           return redirect('/show')
         else:
            form.save() 
            return redirect('/show')            

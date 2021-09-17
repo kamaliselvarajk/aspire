@@ -45,26 +45,8 @@ class EmployeeCreationForm(forms.Form):
     group = forms.ChoiceField(label='Group', choices=(("Employee","Employee"),("Manager","Manager")))
     bio = forms.CharField(label='Bio', max_length=30, widget=forms.Textarea(attrs={'rows':2, 'cols':22}), required=False)
 
-    '''def save(self):
-        name = self.cleaned_data['name']
-        pwd= self.cleaned_data['pwd']  
-        img  = self.cleaned_data['img']
-        leave_days = self.cleaned_data['leave_days']
-        gender  = self.cleaned_data['gender']
-        manager_name = self.cleaned_data['manager_name']
-        group  = self.cleaned_data['group']
-        bio  = self.cleaned_data['bio']
-        user = User.objects.create(username=name,password=pwd, is_active='1')
-        user.save()
-        user_app = UserProfile.objects.create(user_id=user.id, img=img, leave_days=leave_days, gender=gender, manager_name=manager_name, group=group, bio=bio)
-        user_app.save()
-        groups = Group.objects.get(name=group)
-        groups.user_set.add(user)
-        groups.save()
-        user.save()'''
-
     def save(self):
-        user = User.objects.create(username=self.cleaned_data['name'],password=self.cleaned_data['pwd'], is_active='1')
+        user = User.objects.create(username=self.cleaned_data['name'], password=self.cleaned_data['pwd'], is_active='1')
         user_app = UserProfile.objects.create(user_id=user.id, img=self.cleaned_data['img'], leave_days=self.cleaned_data['leave_days'], gender=self.cleaned_data['gender'], manager_name=self.cleaned_data['manager_name'], group=self.cleaned_data['group'], bio=self.cleaned_data['bio'])
         user_app.save()
         groups = Group.objects.get(name=self.cleaned_data['group'])
@@ -80,24 +62,7 @@ class ManagerCreationForm(forms.Form):
     gender = forms.ChoiceField(label='Gender', choices=GENDER)
     group = forms.ChoiceField(label='Group', choices=(("Employee","Employee"),("Manager","Manager")))
     bio = forms.CharField(label='Bio', max_length=30, widget=forms.Textarea(attrs={'rows':2, 'cols':22}), required=False)
-            
-    '''def save(self):
-        name = self.cleaned_data['name']
-        password= self.cleaned_data['password']
-        img  = self.cleaned_data['img']
-        domain  = self.cleaned_data['domain']
-        gender  = self.cleaned_data['gender']
-        group  = self.cleaned_data['group']
-        bio  = self.cleaned_data['bio']
-        user = User.objects.create(username=name, password=password, is_active='1', is_staff='1')
-        user.save()
-        user_app = UserProfile.objects.create(user_id=user.id, img=img, domain=domain, gender=gender, group=group, bio=bio)
-        user_app.save()
-        groups = Group.objects.get(name=group)
-        groups.user_set.add(user)
-        groups.save()
-        user.save()'''   
-
+     
     def save(self):
         user = User.objects.create(username=self.cleaned_data['name'], password=self.cleaned_data['password'], is_active='1', is_staff='1')
         user_app = UserProfile.objects.create(user_id=user.id, img=self.cleaned_data['img'], domain=self.cleaned_data['domain'], gender=self.cleaned_data['gender'], group=self.cleaned_data['group'], bio=self.cleaned_data['bio'])

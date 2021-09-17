@@ -1,7 +1,6 @@
 from django import forms
-from django.forms.widgets import DateInput, Textarea
+from django.forms.widgets import DateInput
 from .models import LeaveRequest
-import datetime
 
 LEAVE_TYPE=(
     ('Personal leave','Personal Leave'),
@@ -31,15 +30,6 @@ class LeaveRequestForm(forms.Form):
     no_of_days = forms.IntegerField(max_value=3)
     manager_name = forms.ChoiceField(label='Manager Name', choices=MANAGER)
  
-    '''def save(self, pk, manager_name):
-        leave_reason = self.cleaned_data['leave_reason']
-        leave_type= self.cleaned_data['leave_type']
-        no_of_days  = self.cleaned_data['no_of_days']
-        from_date = self.cleaned_data['from_date']
-        to_date = self.cleaned_data['to_date']
-        emp_app = LeaveRequest.objects.create(leave_reason=leave_reason, leave_type=leave_type, from_date=from_date, to_date=to_date, no_of_days=no_of_days, status='requested', emp_name_id=pk, manager_name=manager_name)
-        emp_app.save()'''
-
     def save(self, pk, manager_name):
         emp_app = LeaveRequest.objects.create(leave_reason=self.cleaned_data['leave_reason'], leave_type=self.cleaned_data['leave_type'], from_date=self.cleaned_data['from_date'], to_date=self.cleaned_data['to_date'], no_of_days=self.cleaned_data['no_of_days'], status='requested', emp_name_id=pk, manager_name=manager_name)
         emp_app.save()
@@ -47,6 +37,4 @@ class LeaveRequestForm(forms.Form):
 class LeaveApproveForm(forms.Form):
     status = forms.ChoiceField(choices=(('Approve','Approve'),('Cancel','Cancel')))
     manager_name = forms.CharField(max_length=20)
-    cancel_reason = forms.CharField(max_length=20, required=False)
-
-  
+    cancel_reason = forms.CharField(max_length=20, required=False)  

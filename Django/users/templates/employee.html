@@ -12,8 +12,7 @@
             <span class="navbar-nav ml-auto">
                 <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
             </span>
-        </nav> 
-       
+        </nav>        
         <div class='div'> <h2>Create Employee</h2>
             <form action="" method="POST"> 
                 {% csrf_token %}
@@ -22,18 +21,17 @@
                 <label class="col-sm-2 col-form-label" for="{{ form.img.id_for_label }}">{{form.img.label_tag}}<span class='required'></span></label>{{form.img}}<span class='error'>{{form.img.errors}}</span><br>
                 <label class="col-sm-2 col-form-label" for="{{ form.leave_days.id_for_label }}">{{form.leave_days.label_tag}}<span class='required'></span></label>{{form.leave_days}}<span class='error'>{{form.leave_days.errors}}</span><br>
                 <label class="col-sm-2 col-form-label" for="{{ form.gender.id_for_label }}">{{form.gender.label_tag}}<span class='required'></span></label>{{form.gender}}<span class='error'>{{form.gender.errors}}</span>
-                <!--<label class="col-sm-2 col-form-label" for="{{ form.manager_name.id_for_label }}">{{form.manager_name.label_tag}}<span class='required'></span></label>{{form.manager_name}}<span class='error'>{{form.manager_name.errors}}</span><br>-->
-                <label class="col-sm-2 col-form-label">Manager Name:<span class='required'></span></label>
-                <select name="manager" id="manager">
+                <label class="col-sm-2 col-form-label" for="{{ form.manager_name.id_for_label }}">{{form.manager_name.label_tag}}<span class='required'></span></label>{{form.manager_name}}<span class='error'>{{form.manager_name.errors}}</span><br>
+                <!--<label class="col-sm-2 col-form-label">Manager Name:<span class='required'></span></label>
+                <select name="manager_name" id="manager">
                     {% for manager in manager_list %}
                         <option>                        
                             {{ manager }}                            
                         </option>
                     {%endfor%}    
-                </select><br>
+                </select><br>-->
                 <label class="col-sm-2 col-form-label" for="{{ form.group.id_for_label }}">{{form.group.label_tag}}<span class='required'></span></label>{{form.group}}<span class='error'>{{form.group.errors}}</span><br>
-                <label class="col-sm-2 col-form-label" for="{{ form.bio.id_for_label }}">{{form.bio.label_tag}}</label>{{form.bio}}<span>{{form.bio.errors}}</span><br>
-                
+                <label class="col-sm-2 col-form-label" for="{{ form.bio.id_for_label }}">{{form.bio.label_tag}}</label>{{form.bio}}<span>{{form.bio.errors}}</span><br>                
                 <button type="submit">Submit</button>
             </form>
         </div>

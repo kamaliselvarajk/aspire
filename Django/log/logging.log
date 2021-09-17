@@ -1,0 +1,16 @@
+2021-09-17 17:40:22,253:django.utils.autoreload: INFO->Watching for file changes with StatReloader
+2021-09-17 17:40:41,119:django.server: INFO->"GET /splogin/ HTTP/1.1" 200 1443
+2021-09-17 17:40:41,165:django.server: INFO->"GET /static/loginstyle.css HTTP/1.1" 304 0
+2021-09-17 17:40:41,187:django.request: WARNING->Not Found: /DJANGO/boot/css/bootstrap.min.css
+2021-09-17 17:40:41,188:django.server: WARNING->"GET /DJANGO/boot/css/bootstrap.min.css HTTP/1.1" 404 4296
+2021-09-17 17:40:57,240:django.server: INFO->"POST /splogin/ HTTP/1.1" 302 0
+2021-09-17 17:40:57,246:django.server: INFO->"GET /splogin HTTP/1.1" 301 0
+2021-09-17 17:40:57,266:django.server: INFO->"GET /splogin/ HTTP/1.1" 200 1528
+2021-09-17 17:40:57,316:django.request: WARNING->Not Found: /DJANGO/boot/css/bootstrap.min.css
+2021-09-17 17:40:57,317:django.server: WARNING->"GET /DJANGO/boot/css/bootstrap.min.css HTTP/1.1" 404 4296
+2021-09-17 17:41:15,552:django.server: INFO->"POST /splogin/ HTTP/1.1" 302 0
+2021-09-17 17:41:15,573:django.server: INFO->"GET /apply HTTP/1.1" 301 0
+2021-09-17 17:41:15,627:django.server: INFO->"GET /apply/ HTTP/1.1" 200 3578
+2021-09-17 17:41:15,679:django.server: INFO->"GET /static/requiredstyle.css HTTP/1.1" 304 0
+2021-09-17 17:41:15,700:django.request: WARNING->Not Found: /boot/css/bootstrap.min.css
+2021-09-17 17:41:15,700:django.server: WARNING->"GET /boot/css/bootstrap.min.css HTTP/1.1" 404 4275
