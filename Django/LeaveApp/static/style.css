@@ -1,18 +1,23 @@
 body{
-    background-image: url('../static/leave.jpg');
+    background-image: url('../static/leave5.1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.required:after{
+  content:" *";
+  color: red;
+}
 .div{
   float: none;
-width: 90%;
-padding-left: 12em;
+  width: 90%;
+  padding-left: 12em;
 }
 
 .topnav {
   overflow: hidden;
-  background-color: #333;
-  }
+  background-color: rgb(49, 49, 49);
+}
   
 .topnav a {
   float: left;
@@ -25,11 +30,11 @@ padding-left: 12em;
 
 .topnav a:hover {
   background-color: #ddd;
-  color: black;
+  color: #161515;
 }
   
 .topnav a:active {
-  background-color: #04AA6D;
+  color: #04AA6D;
   color: white;
 }
 

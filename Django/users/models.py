@@ -9,20 +9,27 @@ ELIGIBLE_LEAVE=(
     ('5','5')
 )
 GENDER=(
-    ('male','Male'),
-    ('femae','Female')
+    ('Male','Male'),
+    ('Female','Female')
 )
 MANAGER=(
     ('Rakesh','Rakesh'),
     ('Yasin','Yasin'),
-    ('Jaya', 'Jaya')
+    ('Jaya', 'Jaya'),
+    ('Kannan', 'Kannan')
 )
-
+GROUP=(
+    ('Employee','Employee'),
+    ('Manager','Manager')
+)
+ 
 class UserProfile(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
-    password = models.CharField(max_length=10, default='qwerty@123')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)    
     img = models.ImageField(upload_to='profiles', default='default.img', help_text='Upload image with size of 1MB')
     leave_days = models.CharField(max_length=20, choices=ELIGIBLE_LEAVE)
     gender = models.CharField(max_length=20, choices=GENDER)
-    manager_name = models.CharField(max_length=50, choices=MANAGER, default='Rakesh')
+    manager_name = models.CharField(max_length=50, choices=MANAGER, default='Kannan')
+    domain = models.CharField(max_length=30, default='Python')
+    group = models.CharField(max_length=20, choices=GROUP, default='Admin')
     bio = models.CharField(max_length=100)
+

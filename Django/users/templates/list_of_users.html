@@ -1,11 +1,35 @@
+
 <html>
     <head>
         <title>List of users</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--<link rel='stylesheet' href='../static/style.css'>-->
+        <link rel='stylesheet' href='../static/adminstyle.css'>
+        <link rel='stylesheet' href='../DJANGO/boot/css/bootstrap.min.css'>        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     </head>
     <body>
-        <h2>List of users</h2>
-        
-        <table border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
+        <div class="navbar">  
+            <div class="dropdown">
+              <button class="dropbtn">Create User
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content">
+                <a href='/employee'>Create Employee</a>
+                <a href='/manager'>Create Manager</a>
+              </div>              
+            </div> <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
+          </div>
+          <!--<nav class='topnav'>
+            <a href='/add'>Go Back</a>
+            <span class="navbar-nav ml-auto">
+                <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
+            </span>
+        </nav>-->
+        <center><br><br>         
+        <h4><caption>List of users</caption></h4>        
+        <table class='table table-hover' border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
             <tr>
                 <th>Username</th>
                 <th>Leave Days</th>
@@ -15,7 +39,7 @@
             </tr>
             {% for i in data %}
             <tr>
-                <td>{{i.username}}</td>
+                <td>{{i.user_id}}</td>
                 <td>{{i.leave_days}}</td>
                 <td>{{i.gender}}</td>
                 <td>{{i.manager_name}}</td>
@@ -23,5 +47,11 @@
             </tr>
             {%endfor%}
         </table>
+        </center>
+        <footer class="">
+            <div class="footer-copyright text-center py-3">&copy 2021 Copyright:    
+            <a href="#">SK</a>    
+            </div>    
+        </footer>
     </body>
 </html>
