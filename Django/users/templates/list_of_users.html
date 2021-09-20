@@ -28,10 +28,11 @@
             </span>
         </nav>-->
         <center><br><br>         
-        <h4><caption>List of users</caption></h4>        
+        <h2><caption>List of users</caption></h2>        
         <table class='table table-hover' border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
             <tr>
-                <th>Username</th>
+                <th>S.No</th>
+                <th>User id</th>
                 <th>Leave Days</th>
                 <th>Gender</th>
                 <th>Manager Name</th>
@@ -39,6 +40,7 @@
             </tr>
             {% for i in data %}
             <tr>
+                <td>{{ forloop.counter }}</td>
                 <td>{{i.user_id}}</td>
                 <td>{{i.leave_days}}</td>
                 <td>{{i.gender}}</td>

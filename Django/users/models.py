@@ -26,10 +26,10 @@ GROUP=(
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)    
     img = models.ImageField(upload_to='profiles', default='default.img', help_text='Upload image with size of 1MB')
-    leave_days = models.CharField(max_length=20, choices=ELIGIBLE_LEAVE)
+    leave_days = models.CharField(max_length=20, choices=ELIGIBLE_LEAVE, default='0')
     gender = models.CharField(max_length=20, choices=GENDER)
-    manager_name = models.CharField(max_length=50, choices=MANAGER, default='Kannan')
+    manager_name = models.CharField(max_length=50, choices=MANAGER, default='None')
     domain = models.CharField(max_length=30, default='Python')
     group = models.CharField(max_length=20, choices=GROUP, default='Admin')
-    bio = models.CharField(max_length=100)
+    bio = models.CharField(max_length=1000)
 

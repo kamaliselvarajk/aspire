@@ -4,6 +4,17 @@
         <link rel='stylesheet' href='../static/adminstyle.css'>
         <link rel='stylesheet' href='../boot/css/bootstrap.min.css'>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            table, td, th {  
+                border: 1px solid #ddd;
+                text-align: center;
+                padding: 10px;
+                background-color: whitesmoke;
+            }
+            .topnav-right {
+                float: right;
+            }
+        </style>
     </head>
     <body>
     <div class="navbar">  
@@ -15,28 +26,38 @@
             <a href='/employee'>Create Employee</a><br>
             <a href='/manager'>Create Manager</a>
         </div>    
-        </div> <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
+        </div><span class='topnav-right'> <a href='/splogout' class="navbar-nav ml-auto">Logout</a></span>
     </div>
-<center><br><br>         
-  <h4><caption>List of users</caption></h4>        
-  <table class='table table-hover' border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
+<center>        
+  <h2><caption>List of Users</caption></h2>        
+  <table class='table table-hover' border='1' style='border-collapse:collapse; width:75%; text-align:center;'>
       <tr>
-          <th>Username</th>
+          <th>S.No</th>
+          <th>User id</th>
           <th>Leave Days</th>
           <th>Gender</th>
           <th>Manager Name</th>
+          <th>Group</th>
           <th>Bio</th>
       </tr>
-      {% for i in data %}
-      <tr>
-          <td>{{i.user_id}}</td>
-          <td>{{i.leave_days}}</td>
-          <td>{{i.gender}}</td>
-          <td>{{i.manager_name}}</td>
-          <td>{{i.bio}}</td>
-      </tr>
-      {%endfor%}
-  </table><br> 
+      {% if data %}
+        {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.user_id}}</td>
+                <td>{{i.leave_days}}</td>
+                <td>{{i.gender}}</td>
+                <td>{{i.manager_name}}</td>
+                <td>{{i.group}}</td>
+                <td>{{i.bio}}</td>
+             </tr>
+        {%endfor%}
+      {% else %}
+            <tr>
+                <td colspan='6'>No results found</td>
+            </tr>    
+       {% endif %}
+  </table><br>  
   <footer class="">
       <div class="footer-copyright text-center py-3">&copy 2021 Copyright:    
       <a href="#">SK</a>    

@@ -14,15 +14,20 @@ def request_leave(request):
     form = LeaveRequestForm(request.POST)
     current_user = request.user
     id = request.user.id
-    manager = UserProfile(user_id=id)
+    manager = UserProfile.objects.get(user_id=id)
     manager_name = manager.manager_name
     if request.method == 'POST':
+        print(request.POST['leave_reason'])
+        print(request.POST['leave_type'])
+        print(request.POST['from_date'])
+        print(request.POST['to_date'])
+        print(request.POST['no_of_days'])
         if form.is_valid():
             form.save(id, manager_name)
             return redirect('/leavedetails')
         else:
-            form.save(id, manager_name)
-            return redirect('/leavedetails')
+            print('Invalid form')
+            return render(request, 'leaveapp/leave_form.html', {'form':form, 'current_user':current_user, 'header':header,'manager_name':manager_name})
     else:
         return render(request, 'leaveapp/leave_form.html', {'form':form, 'current_user':current_user, 'header':header,'manager_name':manager_name})
 
@@ -43,8 +48,9 @@ def leave_details(request):
     header = 'Requested Leave'
     current_user = request.user
     id = request.user.id
-    manager = UserProfile(user_id=id)
+    manager = UserProfile.objects.get(user_id=id)
     manager_name = manager.manager_name
+    print(manager_name)
     approve = LeaveRequest.objects.filter(emp_name=request.user, status='requested') 
     return render(request, 'leaveapp/leave_details.html', {'approve':approve, 'current_user':current_user, 'header':header, 'manager_name':manager_name})
 
@@ -53,7 +59,7 @@ def leave_status(request):
     header = 'Leave History'  
     current_user = request.user
     id = request.user.id
-    manager = UserProfile(user_id=id)
+    manager = UserProfile.objects.get(user_id=id)
     manager_name = manager.manager_name
     approve = LeaveRequest.objects.filter((Q(status='approved') | Q(status='cancelled')), emp_name=request.user) 
     return render(request, 'leaveapp/leave_details.html', {'approve':approve, 'current_user':current_user, 'header':header, 'manager_name':manager_name})
@@ -69,7 +75,7 @@ def approve(request,pk):
 def cancel(request,pk):
     emp_app = LeaveRequest.objects.get(emp_name_id=pk, status='requested')
     emp_app.status = 'cancelled'
-    #print(slug)
+    #print(slug) 
     if request.method == 'POST':
         if request.POST.get('cancel_reason'):
             form = LeaveRequest()
