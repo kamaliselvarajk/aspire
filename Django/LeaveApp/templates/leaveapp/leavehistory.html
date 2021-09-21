@@ -12,12 +12,12 @@
             <span class="topnav-right">
                 <a href='/update'>Update Profile</a>
                 <a href='/splogout'>Logout</a>
-            </span>        
+            </span>       
         </nav>         
         <p> You are logged in as {{current_user.username}}! </p>       
         <div>
             <center><h5><caption>{{header}}</caption></h5>
-            <table class='table table-hover' border='1' style='width:80%; text-align:center;'>            
+            <table class='table table-hover' border='1' style='width:90%; text-align:center;'>            
                 <tr>
                     <th>S.No</th>
                     <th>Employee Name</th>
@@ -26,6 +26,7 @@
                     <th>No of days</th>
                     <th>Manager Name</th>
                     <th>Status</th>
+                    <th>Cancel Reason</th>
                 </tr>
                 {% if approve %}
                     {% for i in approve %}
@@ -37,11 +38,12 @@
                             <td>{{i.no_of_days}}</td>
                             <td>{{manager_name}}</td>
                             <td>{{i.status}}</td>
+                            <td>{{i.cancel_reason}}</td>
                         </tr>
                     {% endfor %}
                 {% else %}
                     <tr>
-                        <td colspan='7'>No results found</td>
+                        <td colspan='8'>No results found</td>
                     </tr>    
                 {% endif %}   
             </table> </center> 

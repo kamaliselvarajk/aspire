@@ -120,7 +120,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -129,3 +128,9 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kamalirasi2017@gmail.com'
+EMAIL_HOST_PASSWORD = 'kamali.selvaraj'
+EMAIL_PORT = 587

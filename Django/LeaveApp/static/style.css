@@ -57,10 +57,41 @@ h3 {
   color: red;
 }
 .create-user{             
-  border: 3px solid rgb(243, 245, 111);    
+  border: 2px solid rgb(243, 245, 111);    
   border-radius: 25px;
   box-shadow: 4px 4px 4px 4px; 
-  width: 90%;
-  margin: 25px;
-  padding-left: 10em;
-}  
+  width: 35%;
+  margin-left: 400px;
+  margin-top: 10px;
+}     
+.color {
+  color: rgb(58, 99, 233);
+}
+.leave-form{              
+  border: 2px solid rgb(243, 245, 111); 
+  border-radius: 25px;
+  box-shadow: 4px 4px 4px 4px; 
+  width: 35%;
+  margin-left: 400px;
+} 
+.user-form {
+  margin-left: 35px;
+  width: 1000px;
+}
+.reset-form {
+  margin-left: 25px;
+  width: 1150px;
+}
+.topnav-right {
+  float: right;
+}
+.header {
+  margin-left: 90px;
+  margin-bottom: 10px;
+}
+.button {
+  margin-left: 150px;
+}
+.error {
+  color: rgb(245, 68, 56);
+}

@@ -1,4 +1,3 @@
-from users.forms import MANAGER
 from django.db import models
 from django.contrib.auth.models import User 
 import datetime
@@ -8,13 +7,11 @@ LEAVE_TYPE=(
     ('Carry forward','Carry Forward'),
     ('Compensatory leave', 'Compensatory Leave')
 )
-
 MANAGER=(
     ('Yasin','Yasin'),
     ('Rakesh','Rakesh'),
     ('Jaya', 'Jaya')
 )
-
 
 class LeaveRequest(models.Model):
     emp_name = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -27,8 +24,3 @@ class LeaveRequest(models.Model):
     manager_name = models.CharField(max_length=50, choices=MANAGER)
     status = models.CharField(max_length=100, default='requested')
  
-class LeaveApprove(models.Model):
-    emp_name = models.ForeignKey(LeaveRequest, on_delete=models.CASCADE, default='')
-    status = models.CharField(max_length=100)
-    manager_name = models.CharField(max_length=20)
-    cancel_reason = models.CharField(max_length=100, default='None')

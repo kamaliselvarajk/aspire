@@ -10,11 +10,18 @@
               document.getElementById("myForm").style.display = "block";
             }
         </script>
+        <style>
+            .color {
+                color: rgb(58, 99, 233);
+            }
+        </style>
     </head>
     <body>
         <nav class='topnav'>
-            <span class="navbar-nav ml-auto">
-                <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
+            <a href='/approve'>Approve/Cancel</a>
+            <span class="topnav-right">
+                <a href='/updateman'>Update Profile</a>
+                <a href='/splogout'>Logout</a>
             </span>
         </nav>
         <p> You are logged in as {{current_user.username}}! </p>
@@ -41,10 +48,10 @@
                                 <td>{{i.status}}</td>
                                 <td>{{i.emp_name_id}}</td>
                                 <td> 
-                                    <button><a href='/approved/{{i.emp_name_id}}'>Approve</a></button>                    
+                                    <button class='color'><a href='/approved/{{i.emp_name_id}}'>Approve</a></button>                    
                                 </td>
                                 <td>                    
-                                    <button class="open-button" onclick="openForm()">Cancel</button>                                     
+                                    <button class="open-button color" onclick="openForm()">Cancel</button>                                     
                                 </td>
                             </tr>
                         {% endfor %}

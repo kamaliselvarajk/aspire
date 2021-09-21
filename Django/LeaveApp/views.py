@@ -1,32 +1,28 @@
-from LeaveApp.models import LeaveApprove, LeaveRequest
+from LeaveApp.models import LeaveRequest
 from users.models import UserProfile
 from django.shortcuts import redirect, render
 from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http.response import HttpResponseRedirect, HttpResponse
+from django.http.response import HttpResponseRedirect
 from django.db.models import Q
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
 
 @login_required(login_url='/splogin')
 def request_leave(request):
     header = 'Apply Leave'
-    form = LeaveRequestForm(request.POST)
+    form = LeaveRequestForm(request.POST or None)
     current_user = request.user
     id = request.user.id
     manager = UserProfile.objects.get(user_id=id)
     manager_name = manager.manager_name
     if request.method == 'POST':
-        print(request.POST['leave_reason'])
-        print(request.POST['leave_type'])
-        print(request.POST['from_date'])
-        print(request.POST['to_date'])
-        print(request.POST['no_of_days'])
         if form.is_valid():
             form.save(id, manager_name)
             return redirect('/leavedetails')
         else:
-            print('Invalid form')
             return render(request, 'leaveapp/leave_form.html', {'form':form, 'current_user':current_user, 'header':header,'manager_name':manager_name})
     else:
         return render(request, 'leaveapp/leave_form.html', {'form':form, 'current_user':current_user, 'header':header,'manager_name':manager_name})
@@ -36,8 +32,7 @@ def approve_leave(request):
     header = 'Approve\Cancel Leave'
     form = LeaveApproveForm(request.POST)
     current_user = request.user
-    #cancel_reason = 'slug_reason'
-    value = LeaveRequest.objects.filter(status='requested')
+    value = LeaveRequest.objects.filter(status='requested', manager_name = current_user)
     if request.method == 'POST':
         form.save()
     else:
@@ -50,7 +45,6 @@ def leave_details(request):
     id = request.user.id
     manager = UserProfile.objects.get(user_id=id)
     manager_name = manager.manager_name
-    print(manager_name)
     approve = LeaveRequest.objects.filter(emp_name=request.user, status='requested') 
     return render(request, 'leaveapp/leave_details.html', {'approve':approve, 'current_user':current_user, 'header':header, 'manager_name':manager_name})
 
@@ -62,26 +56,55 @@ def leave_status(request):
     manager = UserProfile.objects.get(user_id=id)
     manager_name = manager.manager_name
     approve = LeaveRequest.objects.filter((Q(status='approved') | Q(status='cancelled')), emp_name=request.user) 
-    return render(request, 'leaveapp/leave_details.html', {'approve':approve, 'current_user':current_user, 'header':header, 'manager_name':manager_name})
+    return render(request, 'leaveapp/leavehistory.html', {'approve':approve, 'current_user':current_user, 'header':header, 'manager_name':manager_name})
+
+@login_required(login_url='/splogin')
+def update_employee(request):
+    header = 'Update Profile'
+    form = UpdateEmployeeForm(request.POST or None)
+    current_user = request.user
+    id = current_user.id
+    value = User.objects.filter(id=current_user.id)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save(id) 
+            return redirect('/apply')
+        else:
+            return render(request, 'leaveapp/update_employee.html', {'form':form, 'value':value, 'current_user':current_user, 'header':header})    
+    else:
+        return render(request, 'leaveapp/update_employee.html', {'form':form, 'value':value, 'current_user':current_user, 'header':header})
+
+@login_required(login_url='/splogin')
+def update_manager(request):
+    header = 'Update Profile'
+    form = UpdateManagerForm(request.POST or None)
+    current_user = request.user
+    id = current_user.id
+    value = User.objects.filter(id=current_user.id)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save(id)
+            return redirect('/approve')
+        else:
+            return render(request, 'leaveapp/update_manager.html', {'form':form, 'value':value, 'current_user':current_user, 'header':header})    
+    else:
+        return render(request, 'leaveapp/update_manager.html', {'form':form, 'value':value, 'current_user':current_user, 'header':header})
 
 @login_required(login_url='/splogin')
 def approve(request,pk):
     emp_app = LeaveRequest.objects.get(emp_name_id=pk, status='requested', manager_name=request.user)
     emp_app.status = 'approved'
+    send_mail('Status Of Your Leave Request', 'Dear Employee, your leave has been approved', 'kamalirasi2017@gmail.com', ['kamalishwetha@gmail.com'], fail_silently=False)
     emp_app.save()
+    current_user = request.user
+    to_list = User.objects.get(id=current_user.id).email    
     return redirect('/approve')
 
 @login_required(login_url='/splogin')
 def cancel(request,pk):
     emp_app = LeaveRequest.objects.get(emp_name_id=pk, status='requested')
     emp_app.status = 'cancelled'
-    #print(slug) 
-    if request.method == 'POST':
-        if request.POST.get('cancel_reason'):
-            form = LeaveRequest()
-            emp_app.cancel_reason = request.POST.get('cancel_reason')
-            print(emp_app.cancel_reason)
-    #emp_app.cancel_reason = slug
+    emp_app.cancel_reason = request.GET.get('cancel_reason')
     emp_app.save()
     return redirect('/approve')
 

@@ -1,5 +1,4 @@
 from django import forms
-from django.forms.widgets import RadioSelect
 from .models import UserProfile
 import re
 from django.core.exceptions import ValidationError
@@ -28,11 +27,6 @@ GENDER=(
     ('Male','Male'),
     ('Female','Female')
 )
-MANAGER=(
-    ('Rakesh','Rakesh'),
-    ('Yasin','Yasin'),
-    ('Jaya', 'Jaya')
-)
 
 def name_validation(value):
         if not re.findall('[a-zA-Z]', value):
@@ -56,6 +50,7 @@ def password_validation(value):
 class EmployeeCreationForm(forms.Form):
     name = forms.CharField(label='Username',max_length=20 , validators=[name_validation])
     pwd = forms.CharField(label='Password', widget=forms.PasswordInput(), validators=[password_validation])
+    email = forms.EmailField(label='Email', widget=forms.EmailInput())
     img = forms.ImageField(label='Image', required=False)
     leave_days = forms.IntegerField(max_value=3)
     gender = forms.ChoiceField(label='Gender', choices=GENDER)
@@ -64,7 +59,7 @@ class EmployeeCreationForm(forms.Form):
     bio = forms.CharField(label='Bio', max_length=200, widget=forms.Textarea(attrs={'rows':2, 'cols':22}), required=False)
 
     def save(self):
-        user = User.objects.create(username=self.cleaned_data['name'], password=self.cleaned_data['pwd'], is_active='1')
+        user = User.objects.create(username=self.cleaned_data['name'], password=make_password(self.cleaned_data['password']), email=self.cleaned_data['email'], is_active='1')
         user_app = UserProfile.objects.create(user_id=user.id, img=self.cleaned_data['img'], leave_days=self.cleaned_data['leave_days'], gender=self.cleaned_data['gender'], manager_name=self.cleaned_data['manager_name'], group=self.cleaned_data['group'], bio=self.cleaned_data['bio'])
         user_app.save()
         groups = Group.objects.get(name=self.cleaned_data['group'])
@@ -75,6 +70,7 @@ class EmployeeCreationForm(forms.Form):
 class ManagerCreationForm(forms.Form):
     name = forms.CharField(label='Username', max_length=20, validators=[name_validation])
     password = forms.CharField(label='Password', widget=forms.PasswordInput(), validators=[password_validation])
+    email = forms.EmailField(label='Email', widget=forms.EmailInput())
     img = forms.ImageField(label='Image', required=False)
     domain = forms.CharField(label='Domain', max_length=20)
     gender = forms.ChoiceField(label='Gender', choices=GENDER)
@@ -82,7 +78,7 @@ class ManagerCreationForm(forms.Form):
     bio = forms.CharField(label='Bio', max_length=30, widget=forms.Textarea(attrs={'rows':2, 'cols':22}), required=False)
      
     def save(self):
-        user = User.objects.create(username=self.cleaned_data['name'], password=make_password(self.cleaned_data['password']), is_active='1', is_staff='1')
+        user = User.objects.create(username=self.cleaned_data['name'], password=make_password(self.cleaned_data['password']), email=self.cleaned_data['email'], is_active='1', is_staff='1')
         user_app = UserProfile.objects.create(user_id=user.id, img=self.cleaned_data['img'], domain=self.cleaned_data['domain'], gender=self.cleaned_data['gender'], group=self.cleaned_data['group'], bio=self.cleaned_data['bio'])
         user_app.save()
         groups = Group.objects.get(name=self.cleaned_data['group'])
