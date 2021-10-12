@@ -5,7 +5,8 @@ import datetime
 LEAVE_TYPE=(
     ('Personal leave','Personal Leave'),
     ('Carry forward','Carry Forward'),
-    ('Compensatory leave', 'Compensatory Leave')
+    ('Compensatory leave', 'Compensatory Leave'),
+    ('Lop','LOP')
 )
 MANAGER=(
     ('Yasin','Yasin'),

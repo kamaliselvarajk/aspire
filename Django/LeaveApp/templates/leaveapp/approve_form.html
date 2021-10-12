@@ -48,7 +48,7 @@
                                 <td>{{i.status}}</td>
                                 <td>{{i.emp_name_id}}</td>
                                 <td> 
-                                    <button class='color'><a href='/approved/{{i.emp_name_id}}'>Approve</a></button>                    
+                                    <button class='color'><a href='/approved/{{i.id}}'>Approve</a></button>                    
                                 </td>
                                 <td>                    
                                     <button class="open-button color" onclick="openForm()">Cancel</button>                                     
@@ -65,7 +65,7 @@
         </center>    
         <span class="form-popup" id="myForm" method='POST'>
             {% for i in value %}
-                <form action="/cancelled/{{i.emp_name_id}}" class="form-container">      
+                <form action="/cancelled/{{i.id}}" class="form-container">      
                     <label for="cancel_reason"><b>Reason for cancelling leave</b></label>
                     <input type="text" placeholder="Cancel reason" name="cancel_reason" required>         
                     <button type="submit" class="btn">Submit</button> 

@@ -5,7 +5,7 @@ from .forms import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
-from django.db.models import Q
+from django.db.models import Q, Sum
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -33,10 +33,7 @@ def approve_leave(request):
     form = LeaveApproveForm(request.POST)
     current_user = request.user
     value = LeaveRequest.objects.filter(status='requested', manager_name = current_user)
-    if request.method == 'POST':
-        form.save()
-    else:
-        return render(request, 'leaveapp/approve_form.html', {'form':form, 'value':value, 'current_user':current_user, 'header':header})
+    return render(request, 'leaveapp/approve_form.html', {'form':form, 'value':value, 'current_user':current_user, 'header':header})
 
 @login_required(login_url='/splogin')
 def leave_details(request):
@@ -64,7 +61,7 @@ def update_employee(request):
     form = UpdateEmployeeForm(request.POST or None)
     current_user = request.user
     id = current_user.id
-    value = User.objects.filter(id=current_user.id)
+    value = UserProfile.objects.get(user_id=current_user.id)
     if request.method == 'POST':
         if form.is_valid():
             form.save(id) 
@@ -80,7 +77,7 @@ def update_manager(request):
     form = UpdateManagerForm(request.POST or None)
     current_user = request.user
     id = current_user.id
-    value = User.objects.filter(id=current_user.id)
+    value = UserProfile.objects.get(user_id=current_user.id)
     if request.method == 'POST':
         if form.is_valid():
             form.save(id)
@@ -92,17 +89,25 @@ def update_manager(request):
 
 @login_required(login_url='/splogin')
 def approve(request,pk):
-    emp_app = LeaveRequest.objects.get(emp_name_id=pk, status='requested', manager_name=request.user)
+    emp_user = LeaveRequest.objects.filter(id=pk).first()
+    emp_user_count = LeaveRequest.objects.filter(emp_name_id=emp_user.emp_name_id, status='approved').aggregate(total=Sum('no_of_days'))
+    emp_app = LeaveRequest.objects.get(id=pk)
+    print(emp_user.emp_name)
+    print(emp_app)
+    print(emp_user_count)
+    if emp_user_count['total'] == None:
+        emp_user_count['total'] = 0
+    print(emp_user_count)
+    if not int(emp_user_count['total']) <= 5:
+        print("INSIDE IF")
+        emp_app.leave_type = "LOP"    
     emp_app.status = 'approved'
-    send_mail('Status Of Your Leave Request', 'Dear Employee, your leave has been approved', 'kamalirasi2017@gmail.com', ['kamalishwetha@gmail.com'], fail_silently=False)
-    emp_app.save()
-    current_user = request.user
-    to_list = User.objects.get(id=current_user.id).email    
+    emp_app.save()   
     return redirect('/approve')
 
 @login_required(login_url='/splogin')
 def cancel(request,pk):
-    emp_app = LeaveRequest.objects.get(emp_name_id=pk, status='requested')
+    emp_app = LeaveRequest.objects.get(id=pk)
     emp_app.status = 'cancelled'
     emp_app.cancel_reason = request.GET.get('cancel_reason')
     emp_app.save()

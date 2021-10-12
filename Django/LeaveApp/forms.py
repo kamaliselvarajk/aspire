@@ -33,7 +33,7 @@ class LeaveRequestForm(forms.Form):
     leave_type = forms.ChoiceField(choices=LEAVE_TYPE, label='Leave Type')
     from_date = forms.DateField(widget=DateInput, validators=[date_validate])
     to_date = forms.DateField(widget=DateInput, validators=[date_validate])
-    no_of_days = forms.IntegerField(max_value=3) 
+    no_of_days = forms.IntegerField(max_value=10) 
     manager_name = forms.CharField(disabled=True, required=False)
  
     def save(self, pk, manager_name):
