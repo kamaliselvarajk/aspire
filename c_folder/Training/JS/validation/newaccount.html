@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="register_style.css">
+		<link rel="stylesheet" href="nav_style.css">
+		<script>
+			function formValidation(){
+				var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+				var name = document.getElementById('nameInput').value;
+				var email = document.getElementById('mailInput').value;
+				var firstpwd = document.form1.npwd.value;
+				var secondpwd = document.form1.cpwd.value;
+				//var num = document.form1.number.value;
+				//var firstpwd = document.getElementById('npwdInput').value;
+				//var secondpwd = document.getElementById('cpwdInput').value;
+				var num = document.getElementById('numInput').value;
+				//name validation
+				if(!regName.test(name)){
+    				alert('Your name should be in this format "Shweta Mohan"!');
+				}
+				//email validation
+				if (!((/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/).test(email))) {
+					alert("Enter valid mail id!");
+				}
+				//other validation
+				if(firstpwd!=secondpwd){
+					alert("Password mismatch!");
+				}
+				else if(firstpwd.length<8 && secondpwd.length<8){
+					alert("Your password should contain atleast 8 characters!");
+				}
+				else if(isNaN(num)){
+					alert("Your contact number should be in a numeric form!");
+				}
+				else if(num.length!=10 && num.length>0){
+					alert("Your mobile number seems to be invalid!");
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form method="post" name="form1" onClick="formValidation()">
+			<center>
+				<ul class="nav">
+					<li class="navbar"><a class="active" href="task1.html">Home</a></li>
+					<li class="navbar"><a href="contact_us.html">Contact</a></li>
+					<li class="navbar" class="nav"><a href="aboutus.html">About</a></li>
+					<li class="navbar" style="float:right"><a href="login.html"><img src="login.jpg" class="login" style="height:30px; width:30px;"></a></li>
+					<li class="navbar" style="float:right"><a href="newaccount.html"><img src="signup.jpg" class="signup" style="height:30px; width:30px;"></a></li>
+				</ul>
+				<h1>Create Account</h1>
+					<div>
+						<input type="text" id="nameInput" name="name" placeholder="Name" required size="30"></br></br></br>
+						<input type="mail" id="mailInput" name="email" placeholder="Mail id" required size='30'></br></br></br>
+						<input type="text" id="numInput" name="number" placeholder="Contact Number" required size='30'></br></br></br>
+						<input type="text" id="unameInput" name="uname" placeholder="Username" required size='30'></br></br></br>
+						<input type="password" id="npwdInput" name="npwd" placeholder="New password" required size='30'></br></br></br>
+						<input type="password" id="cpwdInput" name="cpwd" placeholder="Confirm Password" required size='30'></br></br></br>
+						<button type="submit">CREATE</button>
+					</div>
+			</center>
+		</form>
+	</body>
+</html>

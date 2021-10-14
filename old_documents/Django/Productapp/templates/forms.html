@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Login form</title>
+    </head>
+    <body>
+        <form method='POST'>
+            {% csrf_token %}
+            <fieldset>
+                <legend>Login Form</legend>
+                <input type='text' name='email' placeholder='Enter mail id'></br></br>
+                <input type='password' name='password' placeholder='Enter password'></br></br>
+                <input type='submit' value='Submit'>
+            </fieldset>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,5 @@
+1)attendance				- Done
+2)js dom 				- Done
+3)event handling			- Done
+4)form validation
+5)html revision				- Done   

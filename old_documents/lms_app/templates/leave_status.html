@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Leave Status</title>
+    </head>
+    <body>
+        <table border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
+            <tr>
+                <th>Maanger Name</th>
+                <th>Status</th>
+            </tr>
+            {% for i in approve %}
+            <tr>
+                <td>{i.manager_name}</td>
+                <td>{i.status}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>

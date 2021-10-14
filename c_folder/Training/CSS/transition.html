@@ -1,0 +1,30 @@
+<html>
+	<head>
+		<title>Transitions</title>
+		<style>
+			div {
+				width: 130px;
+				height: 50px;
+				background: #233067;
+				transition: width 2s, transform 3s ;
+				padding-top: 25px;
+				color: white;
+				transition-timing-function:ease;
+				transition-delay:1s;
+				transition-duration: 3s;
+			}
+			div:hover {
+			width: 300px;
+			transform: rotateY(180deg);
+			background:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<center>
+				Touch Here
+			</center>
+		</div>
+	</body>
+</html>

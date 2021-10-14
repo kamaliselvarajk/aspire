@@ -1,0 +1,6 @@
+instance variable
+class variable
+class 
+object
+use of __init__
+use of self -->holds the object

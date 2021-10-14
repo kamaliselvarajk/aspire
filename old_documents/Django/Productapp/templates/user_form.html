@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>User form</title>
+    </head>
+    <body>
+        <form method='POST' name = 'myform' action='login/'>
+            {% csrf_token %}
+            
+            <fieldset>
+                <legend>User Form</legend>
+                {{ form.as_table }}
+                <input type='submit' value='Submit'> 
+            </fieldset>
+            <!--<fieldset>
+                <legend>User Form</legend>
+                <input type='text' name='name' placeholder='Enter username' required></br></br>
+                <input type='email' name='email' placeholder='Enter mail id' required></br></br>
+                <input type='password' name='password' placeholder='Enter password' required></br></br>
+                <input type='checkbox' name='admin' value='is_admin_user' required>
+                <label>is_admin_user</label><br><br>
+                <input type='date' name='dob' placeholder='Enter dob' required></br></br>
+                <input type='text' name='bio' placeholder='Enter your bio'><br><br>
+                <input type='submit' value='Submit'>
+            </fieldset> -->
+        </form>
+    </body>
+</html>

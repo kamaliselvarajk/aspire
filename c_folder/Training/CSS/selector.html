@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<title>Selectors</title>
+		<style>
+			*{
+				color:blue;
+			}
+			.first{
+				font-size:40px;
+			}
+			#second{
+				font-style:italic;
+			}
+			h2, p{
+				font-variant:small-caps;
+			}
+			h2[name~=style]{
+				border: 5px dashed red;
+			}
+			body div{
+				background-color: yellow;
+			}
+			body>p{
+				color:black;
+			}
+			h2~p{
+				background-color:red;
+			}
+			h2+p{
+				background-color:#233067;
+				color:white;
+			}
+		</style>
+	</head>
+	<body>
+		<h2 name="style">CSS---> Cascading Style Sheet</h2>
+		<p class="first">HTML---> Hyper Text Markup Language</p>
+		<div id="second">JS---> JavaScript</div>
+		<h2 name="query">SQL---> Structured Query Language</h2>
+		<p>Paragraph Text</p>
+		<span><p>Another paragraph</p></span>
+	</body>
+</html>

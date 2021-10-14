@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Login Form</title>
+        <style>
+            body{
+                background-image: url('../static/leave.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            div{
+                /*height: 200px;*/
+                position: fixed;
+                top: 20%;
+                left: 30%;
+                /*margin-top: -100px;
+                margin-left: -200px;*/
+                width: 300px;
+                border: 5px solid rgb(168, 90, 231);
+                padding: 50px;
+                margin: 20px;
+                background-color: rgb(255, 255, 255);
+                border-radius: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+        <div class="container">
+            <h1>Login Here</h1>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="{{ form.username.id_for_label }}">{{form.username.label_tag}}</label>{{form.username}}<span>{{form.username.error}}</span><br><br>
+                <label for="{{ form.password.id_for_label }}">{{form.password.label_tag}}</label>{{form.password}}<span>{{form.password.error}}</span><br><br>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </center>
+    </body>
+</html>

@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>Leave Approval Form</title>
+        <link rel="stylesheet" href="../static/style.css">
+        <script>
+            function myFunction() {
+                var cancel_reason = window.prompt("Reason for cancelling leave ");
+            }
+            /*$('#status').onchange(function(){
+                $("#reason").toggle($(this).val() == 'Cancel');
+                }).trigger('change'); */
+           /* $(document).ready(function() {
+            $('#status').on('change.reason', function() {
+            $("#reason").toggle($(this).val() == 'Cancel');
+            }).trigger('change.reason');
+            });*/
+            function myfun(){
+            $(document).ready(function () {
+                toggleFields(); 
+                $("#status").change(function () {
+                    toggleFields();
+                });
+            });
+            function toggleFields() {
+                if ($("#status").val() === "Cancel")
+                    $("#reason").show();
+            }
+            }
+            function approve(){
+                var x = document.getElementById('approve').innerHTML='approved';
+                status = x;
+            }
+            function cancel(){
+                var x = document.getElementById('cancel').innerHTML='canceled';
+                status = x;
+            }
+        </script>
+    </head>
+    <body>
+        <form action='/approve/' method="POST">
+            <nav>
+                <ul>
+                    <li><a href='/splogout'>Logout</a></li>
+                </ul>
+            </nav>
+            {% csrf_token %}
+            <!--<h2>You are logged in as {user}</h2>-->
+            <table border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
+                <tr>
+                    <th>Employee Name</th>
+                    <th>Leave Reason</th>
+                    <th>Leave Type</th>
+                    <th>Status</th>
+                    <th colspan='2'>Action</th>
+                </tr>
+                {% for i in value %}
+                <tr>
+                    <td>{{i.emp_name}}</td>
+                    <td>{{i.leave_reason}}</td>
+                    <td>{{i.leave_type}}</td>
+                    <td>{{i.status}}</td>
+                    <td>
+                        <select name='status'>
+                            <option name='status'>Approve</option>
+                            <option name='status'>Cancel</option>
+                        </select>
+                    </td>
+                    <!--<td id='approve'><input type='button' value='Approve' onclick='approve()'></td>
+                    <td id='cancel'><input type='button' value='Cancel' onclick='cancel()'></td>-->
+                </tr>
+                {% endfor %}
+            </table><br><br>
+            <!--<label>Approve or cancel:</label>
+            <select name="status" id="status" onclick="fun()">
+                <option>Approve</option>
+                <option>Cancel</option>
+            </select>
+            <br><br>
+            <div id="reason">
+                <label>Cancel_reason: </label>
+                <input type='text' name='cancel_reason'>
+            </div>
+            <br>-->
+            <!--<button type='submit'>Approve</button>
+            <button id='demo' onclick=myFunction()>Cancel</button>-->
+            <!--<label for="{{ form.cancel_reason.id_for_label }}">{{form.cancel_reason.label_tag}}</label>{{form.cancel_reason}}<span>{{form.cancel_reason.error}}</span><br><br>
+            -->
+            <!--{{ form.as_p}}-->
+            <input type='hidden' id='mytext' name='status' value='requested'>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

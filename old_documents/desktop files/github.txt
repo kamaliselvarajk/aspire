@@ -1,0 +1,44 @@
+Microsoft Windows [Version 10.0.19041.388]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+E:\python\aspire>git commit -m "Python"
+[master (root-commit) 07d6e38] Python
+ Committer: Kamali Selvaraj <kamali.selvaraj@aspiresys.com>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 246 insertions(+)
+ create mode 100644 02-July-2021/arbitrary_argument.py
+ create mode 100644 02-July-2021/positional_only_argument.py
+ create mode 100644 default_arguments.py
+ create mode 100644 keyword_argument.py
+ create mode 100644 list.py
+ create mode 100644 required_argument_1.py
+ create mode 100644 required_argument_2.py
+
+E:\python\aspire>git push
+Select an authentication method for 'https://github.com/':
+  1. Web browser (default)
+  2. Personal access token
+option (enter for default): 1
+info: please complete authentication in your browser...
+Enumerating objects: 10, done.
+Counting objects: 100% (10/10), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (10/10), 2.12 KiB | 216.00 KiB/s, done.
+Total 10 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), done.
+To https://github.com/kamaliselvarajk/aspire.git
+ * [new branch]      master -> master
+
+E:\python\aspire>
