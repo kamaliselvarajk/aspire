@@ -1,0 +1,181 @@
+Class
+	Class is a collection of objects
+	It is a prototype or blueprint from which objects are created
+	It bundles the data and functionality together --- Encapsulation
+	We can call the class by creating an object.
+
+	Example
+		class Person:
+    			age = 10
+
+    			def greet(self):
+    			    print('Hello')
+		obj = Person()
+		print(Person.age) -- 10
+		print(obj.age) -- 10
+		obj.greet() -- Hello
+		print(obj.greet()) -- Hello None.   Because greet function returns nothing. so it give None
+	If we try to print the function in class using object of class, we must use return inside the function
+
+Object
+	Object is an entity along with its attributes and methods or metadata and functionality.
+	Everything in pytohn is an object like functions, tuples, list etc
+	Example
+		def fun(self):
+			a = 10, b=10
+			c = a+b
+	In this example, the function name fun is an attribute, and it performs addition operation that is functionality.
+
+Methods
+	Method is a function that belongs to an object
+	For example, list have methods like append, remove, insert etc
+
+Class variable and Instance variable
+	Class variable 		-- The value of class variable doesn't change inside the class and its method. eg. static int a
+			  	   It is directly accessed by calling the variable name inside the class	
+	Instance variable	-- The value of instance variable can be changed inside the class and its method. eg. int a 
+			           It is accessed by calling with class name 	
+				   Accessed using self and getattr()
+
+Static Method
+	It is a method or function of a class that we access directly with class name without creating object  
+	There is no need to use self in the method.   	
+	It can be overloaded and not overrided
+	When to use
+		If there is no need to access the method anywhere, then we use static method
+
+Method Overloading and Overriding
+	Overloading	-- two methods can have same name and different parameters
+			   example of compile time polymorphism
+			   performed within the class
+			   It add more to the behaviour of existing methods   eg. adding 2 num in one method and 3 num in overloaded method 
+	Why Python doesn't support method overloading
+		In method, we define the arguments without datatypes. So if we implement method overloading, python doesn't know to which method to go.
+	Overriding 	-- two methods can have same name and same parameters 
+ 			   example of run time polymorphism
+			   performed between two class
+			   It change the behaviour of existing methods        eg. adding 2 num in one method and subtract 2 num in overrided method
+
+Inheritance
+	We can inherit the properties of one class to another class
+	Single Inheritance
+		Inherits the properties of one base class to one derived class
+		eg.	class Animal:  
+    				def speak(self):  
+    				    print("Animal Speaking")    
+			class Dog(Animal):  
+				def bark(self):  
+ 				    print("dog barking")  
+			d = Dog()  
+			d.bark()   -- dog barking
+			d.speak()  -- Animal speaking
+
+	Hierarchical Inheritance
+		One base class have more than one derived class
+		eg. 	class Animal:  
+    				def speak(self):  
+    				    print("Animal Speaking")    
+			class Dog(Animal):  
+				def dogsound(self):  
+ 				    print("dog barking") 
+			class Cat(Animal):  
+				def catsound(self):  
+ 				    print("cat meow") 
+			class Cow(Animal):  
+				def cowsound(self):  
+ 				    print("cow maa")
+			obj = Cow()
+			obj.cowsound() -- cow maa
+			obj.speak()    -- Animal Speaking
+
+	Multilevel Inheritance
+		One derived class act as base class for another class
+		eg.	class Grandfather:  
+    				def fun(self):  
+    				    print("Dancer")    
+			class Father(Grandfather):  
+				def fun(self):  		-- Method overriding
+ 				    print("Singer") 
+			class Son(Father):  
+				def fun(self):  
+ 				    print("Both dancer and singer") 
+			obj = Son()
+			obj.fun()    -- Both singer and dancer
+
+	Multiple Inheritance
+		One derived class has more than one base class
+		eg.	class Father:  
+				def dad(self):  		
+ 				    print("Father")
+    				def fun(self):  
+    				    print("Dancer")    
+			class Mother:  
+				def mom(self):  		
+ 				    print("Mother") 
+				def fun(self):  		
+ 				    print("Singer") 
+			class Child(Father, Mother):  
+				def fun(self):  
+ 				    print("Both dancer and singer") 
+			obj = Child()
+			obj.fun()	-- Both singer and dancer	 	
+			obj.mom()	-- Mother
+			obj.dad()	-- Father
+
+Abstraction
+	Hiding the internal functions/ data from users to reduce the complexity
+	User know what function does, but doesn't know how it does
+	To create abstract class, we have to use 'from abc import ABC' and inherit the abstract class from ABC. eg. class base(ABC) 
+	Abstract class can't be instantiated
+
+Abstract Method
+	An abstract class is a class that contains at least one abstract method. 
+	An abstract method is a method that is declared, but not implemented in the code.
+	We can't create the object for abstract class
+	Abstract method in abstract class doesn't have any implementation... The subclass of abstract class provides the implementation for all the 
+abstract method in its parent class
+
+Encapsulation
+	Process of binding or wrapping up the variables and method into a single entity.
+	eg.. class in python -- It combines the variable and methods in a single class
+  
+Polymorphism
+	An entity has a different characteristic at different times.
+	eg. water 
+	Types --  Runtime Polymorphism		-- Method overriding
+		  Compiletime Polymorphism	-- Method overloading
+
+Methods
+	Instance method
+	Class method
+	Static method
+
+Instance Method
+	It is a method that performs some task with self as default argument
+	Self denotes the objects of the class and instance method depends on the state of the objects 
+Class Method
+	It is a method that bounds to the class and not to the object of the class
+	It uses 'cls' as first argument and it refers to the class
+	It can modify the class state that would apply across all the instance of the class
+	When to use
+		If we need one method to depend on class but not depend on the object, then we use class methods
+Static Method
+	It is a method that we can access by class name without creating an object
+	It eliminates the use of self keyword, so it doesn't depends on the state of the object
+	It also reduces the memory and increase the speed by eliminating the self keyword.
+	When to use
+		If we dont need to change the behaviour or override the method that is the method shuold be constant, then we would use static method
+		If we want to use the method across all instance methods, than we use static method.
+Abstract Method
+ 	Abstract method in abstract class doesn't have any implementation... 
+	The subclass of abstract class provides the implementation for all the abstract method in its parent class
+	An abstract method is a method that has a declaration but does not have an implementation.
+
+Decorator
+	A decorator is an object that is used to extend the behaviour of the function without modifing its behaviour.
+
+
+
+
+
+

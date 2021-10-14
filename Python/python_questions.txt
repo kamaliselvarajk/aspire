@@ -1,0 +1,242 @@
+1)Diff b/w list and tuple
+	List is mutable & tuple is immutable
+	List is slower  & tuple is faster
+	List-> []       & tuple-> ()
+
+2)Key feature of python
+	Interpreted language --> run line by line
+	Dynamically typed    --> Doesn't need the data type for a variable
+	Object oriented	     --> Supports object oriented concepts like abstraction, encapsulation, polymorphism, inheritance
+	Writing python code is easy but it is slower than compiled language
+
+3)Python- Scripting or Programming
+	Python is both scripting(not compiled) and programming(compiled)
+
+4)PEP 8
+	Python Enhancement Protocol is a set of rules that specify how to format python code for maximum readability
+
+5)Memory management in Python
+	Memory management is managed by Python private heap space
+	Python also have in-builtgarbage collector that recycles all ununsed memory
+
+6)Namespace in python
+	It is a naming system used to make sure that name are unique to avoid naming conflicts
+
+7)Modules
+	Modules is a file containing python code
+	Python in-built modules
+		-os
+		-sys
+		-math
+		-random
+		-array
+		-datetime
+		-JSON
+8)Is python case sensitive?  Yes
+
+9)Type conversions in python
+	int()		- Convert any type to integer
+	float()		- Convert any type to float
+	ord()		- Convert character to int (return ascii values)
+	hex()		- Convert int to hexadecimal
+	oct()		- Convert int to octal
+	complex(real,img)
+	tuple()
+	set()
+	dict()
+	list()
+
+10)Diff b/w python array and lists
+	Array stores homogenous values & Lists store heterogenous values
+
+11)__init__
+	It is a conctructor or method which is automatically called to allocate a memory when an object is created 
+	for a class.
+
+12)Lambda function
+	It is an anonymous function that can have number of parameters but single expression
+	It is slower than list comprehension
+
+13)Self in python
+	It is an instance or object of a class
+	Self variable in init method refers to newly created object
+
+14)Python iterators
+	Iterator is an object that helps to iterate through the values
+	eg: a = (1,2,3)
+	    it = iter(a)
+	    print(next(it))
+
+15)Pickling and Unpickling
+	Pickling   --> Process of obtaining an object, convert it into string and dumped it into a file using dump function
+	Unpickling --> Process of recieving the original python object from store string representation
+
+16)Generators in python
+	A function that returns iterable set of items
+
+17)*args and **kwargs
+	*args    --> Used when doesn't know the no. of arguments
+	**kwargs --> Used when doesn't know the no. of keyword arguments
+
+18)Instance variable
+	It is a variable which is declared inside the class but outside the method, constructors.
+
+19)Encapsulation
+	It means binding the code and data together.
+	eg. Class in python
+
+20)Interpreter and its working
+	It is a program that runs another program
+	It converts the source code into intermediate language and again convert it into machine language and then executed
+	It convert the source code to machine code when the program is running
+
+21)Operators & Operator precedence
+	Operator - Arithmetic
+		   Assignment
+		   Comparison
+		   Logical
+		   Identity
+		   Membership
+		   Boolean
+	It specifies the order of the operator which is going to execute first
+
+22)List comprehension
+	It creates a new list from other iterables like tuples, array, string, list etc
+	It is faster than lambda
+	It is preferred while working with list containing large number of elements
+
+23)Whne to use for and while
+	for 	--> It is used when the no. of iterations is known
+		    It depends on the iterations
+	while 	--> It is used when the no. of iterations is not known
+		    It depends on the condition
+
+24)Time complexity
+	It is the time taken by the program to run.
+	Other type is Space complexity
+
+25)Big O notation 
+	It is a way to describe the complexity or speed of a given algorithm
+
+26)Exceptional hierarchy
+	Base class for all exception is BaseException
+	First one in exception is arithmetic exception
+	Last 3 is GeneratorExit, KeyboardInterrupt, SystemExit
+
+27)Arithmetic error
+	Overflow error 	     --> Raised when the result of arithmetic operation is out of range
+	ZeroDivision error   --> Raised when a number is divided by zero
+	Floating point error --> Raised when something gone wrong with floating point calculation
+
+28)Type error
+	Raised when string and list indices are not integers
+	Raised when we  try to add to diff datatypes
+
+29)Attribute error
+	Raised when we try to access the attribute of the class(variable, method)
+
+	Name error
+	Value error
+
+30)Datatypes of python
+	Numeric		--> int, float, complex
+	String
+	Sequence	--> list, tuple, range
+	Mapping		--> dict
+	Boolean		--> bool(True, Flase)
+	Binary		--> bytes, bytearray, memeoryview
+
+31)What is interpreter
+	The Python interpreter is a virtual machine, meaning that it is software that emulates a physical computer.
+
+32)What is error and exception
+	Error --> Errors are usually raised by the environment in which the application is running. 
+		  For example, an error will occur due to a lack of system resources.
+	Exception --> An exception is an event, which occurs during the execution of a program that disrupts 
+		      the normal flow of the program's instructions.
+		  --> It is caused by the program itself.
+
+33)Use of finally in exception handling
+	-->finally block is used to deallocate the system resources.
+	-->We generally use the finally block to execute clean up code like closing connections, closing files, 
+	   or freeing up threads, as it executes regardless of an exception.
+
+34)Regular expression
+	-->A regular expression is a special sequence of characters that helps you match or find other strings or
+ 	   sets of strings, using a specialized syntax held in a pattern
+	-->Python module re provides full support for Perl-like regular expressions in Python.
+
+35)re.search() and re.match()
+	Both return the first match of a substring found in the string, but re. match() searches only from the 
+	beginning of the string and return match object if found. ... While re.search() searches for the whole string
+	even if the string contains multi-lines and tries to find a match of the substring in all the lines of string.
+
+36)init.py file in python
+	The __init__.py file lets the Python interpreter know that a directory contains code for a Python module.
+	An __init__.py file can be blank
+	The file essentially the constructor of your package or directory without it being called such
+
+37)Map()
+	--> Map applies a function to all the items in an input_list
+	fruit = ["Apple", "Banana", "Pear", "Apricot", "Orange"]
+	map_object = map(lambda s: s[0] == "A", fruit)
+	print(list(map_object))
+	o/p--> [True, False, False, True, False]
+
+38)Filter()
+	--> filter() forms a new list that contains only elements that satisfy a certain condition
+	fruit = ["Apple", "Banana", "Pear", "Apricot", "Orange"]
+	filter_object = filter(lambda s: s[0] == "A", fruit)
+	print(list(filter_object))
+	o/p--> ['Apple', 'Apricot']
+
+39)Reduce()
+	-->It does not return a new list based on the function and iterable we've passed. 
+	-->Instead, it returns a single value.
+	list = [2, 4, 7, 3]
+        print(reduce(lambda x, y: x + y, list))
+	o/p--> 16
+
+40)Standard package
+	--> Collection of standard modules
+	--> math, random, re, pprint, functools, array, string, decimal, fractions, datatime, email, json, urllib
+
+41)strftime()
+	-->The datetime object has a method for formatting date objects into readable strings.
+
+	The method is called strftime(), and takes one parameter, format, to specify the format of the returned string:
+	Paramater --> %a, %A, %b, %B, %y, %Y
+
+42)sttrptime() --> parse time
+	The strptime() class method takes two arguments:
+	string (that be converted to datetime)
+	format code
+	Based on the string and format code used, the method returns its equivalent datetime object.
+
+43)Decorators
+	Allows to modify the behaviour of a function without permanently modifying it.
+
+44)Config parser
+	ConfigParser is a Python class which implements a basic configuration language for Python programs. 
+	It provides a structure similar to Microsoft Windows INI files. ConfigParser allows to write 
+Python programs which can be customized by end users easily.
+
+45)String methods
+	capitalize()
+	upper
+	lower
+	isupper
+	islower
+	title
+	swapcase
+	isalnum
+	isalpha
+	isdigit
+	count
+	find
+	replace
+	split
+	join
+	strip
+	lstrip
+	rstrip

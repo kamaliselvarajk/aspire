@@ -1,0 +1,29 @@
+1)DRF
+	Django Rest Framework is a library which works with standard django models to build flexible and 
+powerful API for web application.
+
+2)API
+	Application Programming Interface is a software that allows two applications to communicate with each other 
+to access and retrieve the data.
+
+3)Logging in python
+	Logging is a built in module which allows to write a status message to file or any output streams.
+
+4)Authentication 
+	It is the process of recognizing the user's identity.
+
+5)Middleware in Django
+	It is a lightweight plugin that processes during the execution of request and response.
+	It is used to perform a function in the application
+	The functions can be security, authentication, session, csrf protection. 
+
+6)CSRF
+	CSRF stands for Cross-site Request Forgery and is a type of security threat to websites taking form data.
+ Django provides you built-in support for this, by making it necessary to use this token.
+
+<!--li><a href="{% url 'detail' question.id %}">{{ question.question_text }}</a></li>-->
+
+7)Postman API
+	Postman is an API(application programming interface) development tool which helps to build, test and 
+modify APIs. ... It has the ability to make various types of HTTP requests(GET, POST, PUT, PATCH), saving environments
+for later use, converting the API to code for various languages(like JavaScript, Python).

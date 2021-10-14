@@ -1,0 +1,37 @@
+1xx ---> Informational response
+1xx ---> Informational response
+2xx ---> Success
+3xx ---> Redirection
+4xx ---> Client errors
+5xx ---> Server errors
+
+
+100		Continue
+101		switching protocols
+102		Processing
+103		Early hints
+
+200		OK				Request was completed successfully
+201		Created				New resource was connected successfully
+202		Accepted
+204  		No content
+205		Reset content
+206		Partial content
+
+300		Multiple choices
+301		Moved permanently
+
+400		Bad request			Request was invalid
+401		Unauthorized			The request did not include an authentication token or
+						the authentication token was expired.
+402		Payment required
+403		Forbidden			Client didn't have the permission to access the resource
+404		Not found			Requested resource was not found
+405		Method not allowed		HTTP method in request was not supported by resource
+406		Not acceptable
+408		Request timeout
+409		Confict				Request could not be completed due to conflict
+500		Internal server error		Request was not completed due to internal erro on server side
+501		Not implemented
+503		Service unavailable		Server was unavailable
+505		HTTP version not supported

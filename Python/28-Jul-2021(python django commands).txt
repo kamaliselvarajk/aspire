@@ -1,0 +1,20 @@
+1)pip install virtualenv			- Install new virtual environment
+2)virtualenv --version				- Check the version of virtual environment
+3)python -m pip install --upgrade pip		- Update the version of pip
+4)virtualenv newenv				- Create a virtual environment with the name of 'newenv'
+5)folder\virtualenv name\Scripts\activate       - Activate the virtual environment
+6)folder\virtualenv name\Scripts\deactivate.bat	- Deactivate the virtual environment
+7)pip install django				- Install django
+8)django --version				- Check the version of django
+9)pip freeze > requirements.txt			- Install the requirements.txt file which contains all packages
+10)pip install -r requirements.txt		- Install the packages in requirements.txt file
+11)django-admin.exe startproject projectname .	- Create a django project
+12)python manage.py runserver			- To run(start) the web server
+13)python manage.py makemigrations
+14)python manage.py migrate
+15)python manage.py createsuperuser		- Create new user
+16)python manage.py startapp applicationname	- Create a new application
+17)python manage.py shell			- Start a django shell which is like a python shell
+18)python manage.py sqlmigrate appname 0001
+19)mysql -u 'username' -p 'password'		- To start the mysql shell
+

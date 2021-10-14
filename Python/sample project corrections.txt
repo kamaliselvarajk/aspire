@@ -1,0 +1,49 @@
+1 Bootstrap for style						- Done
+2 Logout in right side						- Done
+3 Change the border color					- Done
+4 All fileds left align						- Done	
+5 Username string						- Done
+6 password - 1 special character, 1 captial letter, length 10	- Done
+7 all fields are mandatory with *	- sixth			- Done	
+8 Bio fields in user profile					- Done
+9 Drop down on right corner for manager and employees for listing the manager and employees	- Done
+10 show the error as invalid login				- Done
+11 disabled for employee autofilled field			- Done		
+12 text area for leave reason					- Done
+13 from and to date for leave date and no.of days is autofilled	- Done
+14 leave status-leave history					- Done
+15 leave request only						- Done
+16 caption for table						- Done
+17 config parser 						- Done
+18 asserts/images/image						- Done
+19 user app separately for userprofile				- Done
+20 app name in small letter					-			
+21 implement group in code					- Done
+22 write save functions in forms.py  				- Done					-
+23 popup form							- Done
+24 add copyright						- Done
+25 install visual studio code software				- Done
+26 add s.no in tables						- Done
+27 add no results in empty tables				- Done
+28 manager page							- Done
+29 autofill the manager in leave request form			- Done
+30 same function for employee and manager in views		- 
+31 use star for self.cleaneddata				- Done
+32 clear the error in manager name				- 
+33 allow the users created by admin in login page		- 
+34 detailmpage for cancellation resaon
+35 asterik symbol correction in login page			- Done
+36 0 leave days for manager					- Done
+36 username fo list of users in admin 				- Done
+37 this field is required in middle and show only when field is empty -  Done
+38 border for create employee					- Done
+39 form in middle of page
+40 submit in middle						- Done
+41 logout in right side						- Done
+
+password validation - invalid form
+form alignment
+autofill manager name in leave request form
+to implement loss of pay
+allow the users created by admin in login page
+

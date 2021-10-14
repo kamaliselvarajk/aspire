@@ -1,0 +1,10 @@
+n = 'Kamali'
+it = iter(n)
+print(it)
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))
+print(next(it))

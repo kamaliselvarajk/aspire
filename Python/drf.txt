@@ -1,0 +1,3 @@
+Serializer
+	It is mainly used for translating django models and querysets to other formats like JSON, XML, etc
+	It's main purpose is to save or preserve the state of an object in order to recreate it, when it is needed
