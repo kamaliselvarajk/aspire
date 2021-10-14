@@ -1,0 +1,19 @@
+body{
+	background-image:url("loginbg.jpg");
+	background-repeat:no-repeat;
+	background-size: cover;
+	color:white;
+}
+label{
+	display:inline;
+	float:initial;
+	text-align:center;
+	position:relative;
+}
+input{
+	display:inline;
+	float:none;
+}
+h1{
+	color:white;
+}
