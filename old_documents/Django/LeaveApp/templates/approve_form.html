@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Approve Form</title>
+        <link rel='stylesheet' href='../static/style.css'>
+        <link rel='stylesheet' href='../static/popupstyle.css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script>
+            function openForm() {
+              document.getElementById("myForm").style.display = "block";
+            }
+            
+            function closeForm() {
+              document.getElementById("myForm").style.display = "none";
+            }
+        </script>
+    </head>
+    <body>
+        <nav class='topnav'>
+            <span class="navbar-nav ml-auto">
+                <a href='/splogout' class="navbar-nav ml-auto">Logout</a>
+            </span>
+        </nav>
+        <p> You are logged in as {{current_user.username}}! </p>
+        <center>
+        <!--<form action='' method="POST">-->
+        <div>
+        {% csrf_token %}
+        <table border='1' style='border-collapse:collapse; width:50%; text-align:center;'>
+            <tr>
+                <th>Employee Name</th>
+                <th>Leave Reason</th>
+                <th>Leave Type</th>
+                <th>Status</th>
+                <th>Emp id</th>
+                <th colspan='2'>Action</th>
+            </tr>
+            {% for i in value %}
+            <tr>
+                <td>{{i.emp_name}}</td>
+                <td>{{i.leave_reason}}</td>
+                <td>{{i.leave_type}}</td>
+                <td>{{i.status}}</td>
+                <td>{{i.emp_name_id}}</td>
+                <td>
+                    <button><a href='/approved/{{i.emp_name_id}}'>Approve</a></button>
+                    <!--{{ form.as_table }}-->
+                    <!--<select name='status'>
+                        <option name='status' value='approved'>Approve</option>
+                        <option name='status' value='cancelled'>Cancel</option>
+                    </select>-->
+                </td>
+                <td>
+                    
+                    <button class="open-button" onclick="openForm()">Cancel</button>
+                                     
+                </td>
+            </tr>
+            {% endfor %}
+        </table><br><br>
+        <!--<button type="submit">Submit</button>  '/cancelld/{{i.emp_name_id}}''
+        <button class="open-button" onclick="openForm()">Cancel</button>
+        -->
+        </div>
+   <!-- </form>--> 
+    </center>
+    
+<span class="form-popup" id="myForm">
+    {% for i in value %}
+    <form action="" class="form-container">
+      
+      <label for="cancel_reason"><b>Reason for cancelling leave</b></label>
+      <input type="text" placeholder="cancel_reason" name="cancel_reason" required>
+         
+      <button type="submit" class="btn">Submit</button> 
+      <!--<button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>-->
+    </form>
+    {% endfor %}
+</span> 
+</body>
+</html>

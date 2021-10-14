@@ -1,0 +1,9 @@
+FORM VALIDATION
+
+User built-in form validation
+
+1)required - check whether the field is filled or not
+2)minlength and maxlength - specifies the min and max length of text
+3)min and max - specifies the minimum and maximum values of numerical input types
+4)type - specifies the type of data 
+5)pattern - Specifies a regular expression that defines a pattern the entered data needs to follow.

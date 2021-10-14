@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Product form</title>
+    </head>
+    <body>
+        <form method='POST'>
+            {% csrf_token %}
+            <fieldset>
+                <legend>Product Form</legend>
+                <input type='text' name='name' placeholder='Enter product name'></br></br>
+                <input type='text' name='cost' placeholder='Enter product cost'></br></br>
+                <input type='text' name='currency' placeholder='Enter currency'></br></br>
+                <input type='text' name='category' placeholder='Enter product category'></br></br>
+                <input type='text' name='colour' placeholder='Enter product colour'></br></br>
+                <input type='submit' value='Submit'>
+            </fieldset>
+        </form>
+    </body>
+</html>
