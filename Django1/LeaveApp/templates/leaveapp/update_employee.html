@@ -1,0 +1,55 @@
+{% load static %}
+<html>
+    <head>
+        <title>Leave Request Form</title>
+        <link rel='stylesheet' href='../static/style.css'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">           
+    </head>
+    <body> 
+        <nav class='topnav'> 
+                <a href='/apply'>Apply Leave</a>
+                <a href='/leavehistory'>Leave History</a>
+                <a href='/leavedetails'>Requested Leave</a>
+                <span class='topnav-right'> 
+                    <a href='/updateemp'>Update Profile</a>                   
+                    <a href='/splogout'>Logout</a>
+                </span>
+        </nav>        
+        <span> You are logged in as {{current_user.username}}! </span>
+        <p class='topnav-right'>The available leave days are {{value.leave_days}}! </p><br>
+        <div class="leave-form inline">
+            <form action='' method='POST' class="form-group user-form">
+                <fieldset>
+                    <b><legend class='head'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{header}}</legend></b>
+                    {% csrf_token %}
+                    
+                    <div class="form-group"> 
+                        <label class="col-sm-2">Employee Name:</label> <input type='text' value={{current_user.username}} readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Email:</label> <input type='text' name='email' value={{current_user.email}}>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Gender:</label> <input type='text' name='gender' value={{value.gender}} readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Group:</label> <input type='text' name='group' value={{value.group}} readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Manager:</label> <input type='text' name='manager_name' value={{value.manager_name}} readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2">Bio:</label> <textarea name='bio' cols='23'>{{value.bio}}</textarea>
+                    </div> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='submit' value='Update'>
+                    &nbsp;&nbsp;<input type='reset' value='Reset'>
+                </fieldset>
+            </form>        
+        </div>        
+        <footer class="">
+            <div class="footer-copyright text-center py-3">&copy 2021 Copyright:    
+                <a href="#">SK</a>    
+            </div>    
+        </footer>        
+    </body>
+</html>
